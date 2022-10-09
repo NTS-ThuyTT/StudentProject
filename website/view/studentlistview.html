@@ -1,0 +1,81 @@
+{% extends "base.html" %} {% block title %}Student List{% endblock %}
+{% block content%}
+<h1 align="center">Student List</h1>
+<h2>(Page {{ pagination.page }})</h2>
+<ul class="list-group list-group-flush" id="students">
+     <table>
+         <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                 <th scope="col">Email</th>
+                <th scope="col">Birthday</th>
+                <th scope="col">Birth Place</th>
+                <th scope="col">Point</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+         </thead>
+         <tbody>
+         <li class="list-group-item">
+          {% for student in pagination.items %}
+              <tr>
+                  <td>{{ student.id }}</td>
+                  <td>{{ student.frstname }}</td>
+                  <td>{{ student.lstname }}</td>
+                  <td>{{ student.email }} </td>
+                  <td>{{ student.birthday }}</td>
+                  <td>{{ student.birthplace }}</td>
+                  <td>{{ student.point }}</td>
+                   <td>
+                      <a class="btn" href="{{ url_for('student.edit_student',id=student.id) }}"><i class="icon-edit"></i> Edit</a>
+                  </td>
+                  <td>
+                      <button type="button" class="close" onClick="deleteStudent({{ student.id }})">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </td>
+              </tr>
+
+          </li>
+
+          {% endfor %}
+     </table>
+</ul>
+ </br>
+<div class="pagination">
+    {% if pagination.has_prev %}
+        <span>
+             <a class='page-number' href="{{ url_for('student.home', page=pagination.prev_num) }}">
+                {{ 'Previous' }}
+            </a>
+        </span>
+    {% endif %}
+    {% for number in pagination.iter_pages() %}
+        {% if number %}
+            {% if pagination.page != number %}
+                <span>
+                        <a class='page-number'
+                            href="{{ url_for('student.home', page=number) }}">
+                        {{ number }}
+                        </a>
+                </span>
+            {% else %}
+                <span class='page-number'>{{ pagination.page }}</span>
+            {% endif %}
+        {% else %}
+            <span class=ellipsis>…</span>
+        {% endif %}
+    {% endfor %}
+   {% if pagination.has_next %}
+        <span>
+            <a class='page-number' href="{{ url_for('student.home', page=pagination.next_num) }}">
+                {{ 'Next' }}
+            </a>
+        </span>
+    {% endif %}
+
+</div>
+
+{% endblock %}

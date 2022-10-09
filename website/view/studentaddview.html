@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% block title %}Student Add{% endblock %}
+{% block content%}
+
+<h1 align="center">Student Add</h1>
+<form class = "row g-3" method="POST">
+    <div class="col-12">
+        <label for="id" class="form-label">ID</label>
+        <input type="text" id = "id" name="id" class="form-control" aria-label="ID" required maxlength="9">
+        <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <div class="col-md-6">
+        <label for="frstname" class="form-label">First name</label>
+        <input type="text"  id = "frstname" name="frstname" class="form-control" aria-label="First name" required maxlength="100">
+        <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <div class="col-md-6">
+         <label for="lstname" class="form-label">Last name</label>
+        <input type="text" id = "lstname" name="lstname" class="form-control" aria-label="Last name" required maxlength="100">
+        <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <div class="col-md-6">
+        <label for="birthday" class="form-label">Birthday</label>
+        <input type="date" id = "birthday" name="birthday" class="form-control" data-date-format="yyyy/mm/dd" aria-label="Birthday" required>
+        <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <div class="col-md-6">
+        <label for="birthplace" class="form-label">Brith Place</label>
+        <input type="text" id = "birthplace" name="birthplace" class="form-control" aria-label="Brith Place" required maxlength="100">
+        <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <div class="col-md-6">
+        <label for="email" class="form-label">Email</label>
+        <input type="text" id = "email" name="email" class="form-control" aria-label="Email" required maxlength="100">
+        <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <div class="col-md-6">
+        <label for="point" class="form-label">Point</label>
+        <input type="text" id = "point" name="point" class="form-control" aria-label="Point" required maxlength="4">
+        <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <div class="col-12"></br> </div>
+    <div align="center" class="col-12">
+        <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+</form>
+{% endblock %}
